@@ -1,0 +1,109 @@
+1. (Dados Aglomerados) Desenvolva um programa em Python que cadastre informações de várias
+pessoas (nome, idade e CPF) e depois coloque em um dicionário. Depois remova todas as
+pessoas menores de 18 anos do dicionário e coloque em outro dicionário.
+
+pessoas = {}
+menores_de_idade = {}
+
+while True:
+    nome = input("Digite o nome da pessoa (ou 'fim' para encerrar): ")
+    if nome == "fim":
+        break
+    idade = int(input("Digite a idade da pessoa: "))
+    cpf = input("Digite o CPF da pessoa: ")
+    
+    informacoes = {"idade": idade, "cpf": cpf}
+    pessoas[nome] = informacoes
+    
+    if idade < 18:
+        menores_de_idade[nome] = informacoes
+        del pessoas[nome]
+
+print("Pessoas cadastradas: ", pessoas)
+print("Menores de 18 anos: ", menores_de_idade)
+
+-----------------------------------------------------------------------------------------------------------------
+2.  Considere um sistema Python onde os dados são armazenados em
+dicionários. Nesse sistema existe um dicionario principal e o dicionário de backup. Cada vez
+que o dicionário principal atinge tamanho 5, ele imprime os dados na tela e apaga o seu conteúdo.
+Crie um programa que insira dados em um dicionário, realizando o backup a cada dado e
+excluindo os dados do dicionário principal quando ele atingir tamanho 5.
+
+dados = {}
+backup = {}
+contador = 0
+
+while True:
+    chave = input("Digite a chave (ou 'fim' para encerrar): ")
+    if chave == "fim":
+        break
+    valor = input("Digite o valor: ")
+    
+    dados[chave] = valor
+    backup[chave] = valor
+    
+    contador += 1
+    if contador == 5:
+        print("Dados: ", dados)
+        dados.clear()
+        contador = 0
+
+print("Backup: ", backup)
+
+-----------------------------------------------------------------------------------------------------------------------
+3. Elabore um programa em Python que Crie a classe “Automóvel” e
+derive (Herança) as 4 subclasses abaixo. Seu programa deve ter no mínimo 2 atributos e no
+mínimo 2 métodos (e garantir o Polimorfismo).
+
+class Automovel:
+    def __init__(self, marca, modelo):
+        self.marca = marca
+        self.modelo = modelo
+    
+    def acelerar(self):
+        pass
+    
+    def frear(self):
+        pass
+
+class Carro(Automovel):
+    def acelerar(self):
+        print(f"O carro {self.modelo} da marca {self.marca} está acelerando.")
+    
+    def frear(self):
+        print(f"O carro {self.modelo} da marca {self.marca} está freando.")
+
+class Moto(Automovel):
+    def acelerar(self):
+        print(f"A moto {self.modelo} da marca {self.marca} está acelerando.")
+    
+    def frear(self):
+        print(f"A moto {self.modelo} da marca {self.marca} está freando.")
+
+class Caminhao(Automovel):
+    def acelerar(self):
+        print(f"O caminhão {self.modelo} da marca {self.marca} está acelerando.")
+    
+    def frear(self):
+        print(f"O caminhão {self.modelo} da marca {self.marca} está freando.")
+
+class Caminhonete(Automovel):
+    def acelerar(self):
+        print(f"A caminhonete {self.modelo} da marca {self.marca} está acelerando.")
+    
+    def frear(self):
+        print(f"A caminhonete {self.modelo} da marca {self.marca} está freando.")
+
+carro = Carro("Fiat", "Palio")
+moto = Moto("Honda", "CBR 1000")
+caminhao = Caminhao("Mercedes-Benz", "Actros")
+caminhonete = Caminhonete("Nissan", "Nissan Frontier")
+
+carro.acelerar()
+moto.acelerar()
+caminhao.acelerar()
+caminhonete.acelerar()
+--------------------------------------------------------------------------------------------------------------
+
+
+
